@@ -1,10 +1,15 @@
 class ActionDispatch::Routing::Mapper
 
   def comfy_route_cms(options = {})
-    
+    puts "===== comfy_route_cms"
+    puts "===== options[:path]"
+    puts options[:path]
     ComfortableMexicanSofa.configuration.public_cms_path = options[:path]
     
     scope :module => :comfy, :as => :comfy do
+      puts "===== comfy"
+      ap options[:sitemap]
+
       namespace :cms, :path => options[:path] do
         get 'cms-css/:site_id/:identifier(/:cache_buster)' => 'assets#render_css', :as => 'render_css'
         get 'cms-js/:site_id/:identifier(/:cache_buster)'  => 'assets#render_js',  :as => 'render_js'
@@ -20,5 +25,7 @@ class ActionDispatch::Routing::Mapper
 
       end
     end
+
+    puts "===== end comfy_route_cms"
   end
 end
