@@ -17,7 +17,10 @@ protected
       puts "===== request.fullpath"
       ap request.fullpath
 
-      ::Comfy::Cms::Site.find_site(request.host_with_port.downcase, request.fullpath)
+      "/homepage/nandachart"
+      "/homepage/somsri-homepage"
+
+      ::Comfy::Cms::Site.find_site(request.host_with_port.downcase, "/homepage/nandachart")
     end
     puts "===== @cms_site"
     ap @cms_site 
